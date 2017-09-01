@@ -4,12 +4,14 @@ import com.serhiikutsyi.reservation.domain.Reservation;
 import com.serhiikutsyi.reservation.exception.ReservationNotFoundException;
 import com.serhiikutsyi.reservation.repository.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 /**
  * @author Serhii Kutsyi
  */
+@Service
 public class ReservationServiceImpl implements ReservationService {
 
     private ReservationRepository reservationRepository;

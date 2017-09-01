@@ -1,5 +1,9 @@
 package com.serhiikutsyi.reservation.domain;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.serhiikutsyi.reservation.json.LocalDateDeserializer;
+import com.serhiikutsyi.reservation.json.LocalDateSerializer;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -24,6 +28,12 @@ public class Reservation {
     private String firstName;
     private String lastName;
     private Integer roomNumber;
+
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
     private LocalDate startDate;
+
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
     private LocalDate endDate;
 }
