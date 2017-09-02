@@ -3,14 +3,17 @@ package com.serhiikutsyi.reservation.service;
 import com.serhiikutsyi.reservation.domain.Reservation;
 import com.serhiikutsyi.reservation.exception.ReservationNotFoundException;
 import com.serhiikutsyi.reservation.repository.ReservationRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 /**
  * @author Serhii Kutsyi
  */
+@Slf4j
 @Service
 public class ReservationServiceImpl implements ReservationService {
 
@@ -23,6 +26,10 @@ public class ReservationServiceImpl implements ReservationService {
 
     public List<Reservation> getAll() {
         return reservationRepository.findAll();
+    }
+
+    public List<Reservation> findByDateRange(LocalDate start, LocalDate end) {
+        return reservationRepository.findByStartDateLessThanEqualAndEndDateGreaterThanEqual(end, start);
     }
 
     public Reservation findById(Long id) {

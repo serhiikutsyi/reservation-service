@@ -36,4 +36,13 @@ public class Reservation {
     @JsonDeserialize(using = LocalDateDeserializer.class)
     @JsonSerialize(using = LocalDateSerializer.class)
     private LocalDate endDate;
+
+    public Reservation(String firstName, String lastName, Integer roomNumber, LocalDate startDate, LocalDate endDate) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.roomNumber = roomNumber;
+        this.startDate = startDate;
+        this.endDate = endDate;
+    }
+
 }

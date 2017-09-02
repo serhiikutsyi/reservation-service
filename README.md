@@ -5,7 +5,7 @@
 Create a new reservation:
 
 ```bash
-http POST http://localhost:8080/reservations \
+http POST http://localhost:8081/reservations \
   firstName="Donald" \
   lastName="Trump" \
   roomNumber=1201  \
@@ -16,5 +16,10 @@ http POST http://localhost:8080/reservations \
 List all reservations:
 
 ```bash
-http GET http://localhost:8080/reservations
+http GET http://localhost:8081/reservations
 ```
+
+Find by date range:
+
+http GET "http://localhost:8081/reservations/query?start=2017-09-04&end=2017-09-06"
+

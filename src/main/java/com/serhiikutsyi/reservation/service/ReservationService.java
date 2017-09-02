@@ -2,6 +2,7 @@ package com.serhiikutsyi.reservation.service;
 
 import com.serhiikutsyi.reservation.domain.Reservation;
 
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -10,6 +11,8 @@ import java.util.List;
 public interface ReservationService {
 
     List<Reservation> getAll();
+
+    List<Reservation> findByDateRange(LocalDate start, LocalDate end);
 
     Reservation findById(Long id);
 
