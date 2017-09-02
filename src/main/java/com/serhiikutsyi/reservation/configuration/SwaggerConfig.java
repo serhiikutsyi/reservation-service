@@ -33,7 +33,7 @@ public class SwaggerConfig {
         return new ApiInfoBuilder()
                 .title("Reservation Service")
                 .description("Reservation REST API")
-                .version("0.0.1")
+                .version("0.0.1-SNAPSHOT")
                 .build();
     }
 }
