@@ -2,7 +2,7 @@ server:
   port: 8081
 logging:
   level:
-    root: WARN
+    root: INFO
 spring:
   datasource:
     platform: h2
