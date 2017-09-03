@@ -13,6 +13,12 @@ The Reservation service will be running on `8081`. To build, test, and run the R
 java -jar build/libs/reservation-service-0.0.1-SNAPSHOT.jar
 ```
 
+## Docker image
+
+```bash
+docker pull serhiikutsyi/reservation-service
+```
+
 ## Reservation Service Endpoints
 The Reservation service exposes several HTTP API endpoints, listed below.
 
@@ -23,7 +29,6 @@ Search Reservations                     | GET     | [/reservations](http://local
 View Reservation                        | GET     | [/reservations/{id}](http://localhost:8081/reservations/{id})
 Create Reservation                      | POST    | [/reservations](http://localhost:8081/reservations)
 Update Reservation                      | PUT     | [/reservations/{id}](http://localhost:8081/reservations/{id})
-Delete Reservation                      | DELETE  | [/reservations/{id}](http://localhost:8081/reservations/{id})
 Delete Reservation                      | DELETE  | [/reservations/{id}](http://localhost:8081/reservations/{id})
 
 ## Swagger
@@ -62,7 +67,7 @@ http GET 'http://localhost:8081/reservations/query?start=2017-09-04&end=2017-09-
 List of pre-populated reservations:
 
 ```json
-
+[
     {
         "endDate": "2017-09-03",
         "firstName": "Elon",
@@ -96,4 +101,13 @@ List of pre-populated reservations:
         "startDate": "2017-09-08"
     }
 ]
+```
+
+Payload validation error message:
+
+```json
+{
+    "message": "Validation failed. 1 error(s). First name must not be blank",
+    "request": "POST /reservations"
+}
 ```

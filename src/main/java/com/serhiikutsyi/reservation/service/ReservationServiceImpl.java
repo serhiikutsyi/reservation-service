@@ -28,6 +28,12 @@ public class ReservationServiceImpl implements ReservationService {
         return reservationRepository.findAll();
     }
 
+    /**
+     * To determine if two date ranges overlap: (StartA <= EndB) and (EndA >= StartB)
+     * See http://stackoverflow.com/questions/325933/determine-whether-two-date-ranges-overlap
+     *
+     * @return List of users
+     */
     public List<Reservation> findByDateRange(LocalDate start, LocalDate end) {
         return reservationRepository.findByStartDateLessThanEqualAndEndDateGreaterThanEqual(end, start);
     }

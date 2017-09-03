@@ -50,8 +50,8 @@ public class ReservationControllerTest {
         reservation.setFirstName("Elon");
         reservation.setLastName("Musk");
         reservation.setRoomNumber(101);
-        reservation.setStartDate(LocalDate.now());
-        reservation.setEndDate(LocalDate.now().plusDays(10));
+        reservation.setStartDate(LocalDate.parse("2017-09-03"));
+        reservation.setEndDate(LocalDate.parse("2017-09-10"));
         ObjectMapper mapper = new ObjectMapper();
         jsonReservation = mapper.writeValueAsString(reservation);
     }
@@ -87,8 +87,17 @@ public class ReservationControllerTest {
 
         mockMvc.perform(MockMvcRequestBuilders.post("/reservations")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"firstName\":\"Mark\",\"lastName\":\"Zuckerberg\",\"roomNumber\":\"101\"}"))
+                .content(jsonReservation))
                 .andExpect(status().isCreated())
+                .andDo(print());
+    }
+
+    @Test
+    public void shouldThrowValidationExceptionIfFirstNameIsEmpty() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.post("/reservations")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("{\"firstName\":\"\",\"lastName\":\"Zuckerberg\",\"roomNumber\":\"101\",\"startDate\":\"2017-09-01\",\"endDate\":\"2017-09-10\"}"))
+                .andExpect(status().isBadRequest())
                 .andDo(print());
     }
 
@@ -98,7 +107,7 @@ public class ReservationControllerTest {
 
         mockMvc.perform(MockMvcRequestBuilders.put("/reservations/{id}", "1")
                 .contentType(APPLICATION_JSON)
-                .content("{\"firstName\":\"Mark\",\"lastName\":\"Zuckerberg\",\"roomNumber\":\"201\"}"))
+                .content(jsonReservation))
                 .andExpect(status().isOk())
                 .andDo(print());
     }
@@ -110,7 +119,7 @@ public class ReservationControllerTest {
 
         mockMvc.perform(MockMvcRequestBuilders.put("/reservations/{id}", "1")
                 .contentType(APPLICATION_JSON)
-                .content("{\"firstName\":\"Steve\",\"lastName\":\"Jobs\",\"roomNumber\":\"101\"}"))
+                .content(jsonReservation))
                 .andExpect(status().isNotFound())
                 .andDo(print());
     }
@@ -126,6 +135,5 @@ public class ReservationControllerTest {
 
         mockMvc.perform(delete("/reservations/{id}", "1")).andExpect(status().isNotFound());
     }
-
 
 }

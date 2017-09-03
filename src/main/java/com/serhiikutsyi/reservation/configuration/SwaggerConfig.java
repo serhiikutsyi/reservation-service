@@ -11,12 +11,18 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
+ * Automatically generate RESTful API documentation with Swagger
+ * See https://swagger.io/
+ *
  * @author Serhii Kutsyi
  */
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {
 
+    /**
+     * Adding reservation service endpoints to the documentation
+     */
     @Bean
     public Docket reservationApi() {
         return new Docket(DocumentationType.SWAGGER_2)
