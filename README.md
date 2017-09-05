@@ -25,7 +25,7 @@ The Reservation service exposes several HTTP API endpoints, listed below.
 Description                             | Method  | Endpoint
 --------------------------------------- | ------- | -------------------------------------------------------------
 List Reservations                       | GET     | [/reservations](http://localhost:8081/reservations)
-Search Reservations                     | GET     | [/reservations](http://localhost:8081/reservations)
+Search Reservations                     | GET     | [/reservations/query](http://localhost:8081/reservations/query?start=2017-09-04&end=2017-09-06)
 View Reservation                        | GET     | [/reservations/{id}](http://localhost:8081/reservations/{id})
 Create Reservation                      | POST    | [/reservations](http://localhost:8081/reservations)
 Update Reservation                      | PUT     | [/reservations/{id}](http://localhost:8081/reservations/{id})
@@ -33,7 +33,11 @@ Delete Reservation                      | DELETE  | [/reservations/{id}](http://
 
 ## Swagger
 [Swagger](http://swagger.io/) is used to describe and document RESTful APIs.
-To access swagger UI, go to: http://localhost:8081/swagger-ui.html
+Swagger UI is available here: http://localhost:8081/swagger-ui.html
+
+## Heroku
+
+The Reservation service is running on [Heroku](https://reservation-service-demo.herokuapp.com/)
 
 ## Sample Requests
 
